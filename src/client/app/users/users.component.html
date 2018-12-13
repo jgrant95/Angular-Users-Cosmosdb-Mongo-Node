@@ -1,0 +1,11 @@
+<h1>
+  Registered Alexa Transport Users
+</h1>
+
+<div class="user-container">
+  <div class="user" *ngFor="let user of users">
+    <span>Id: {{ user.id }}</span>
+    <span>Amazon User Id: {{ user.amazonUserId }}</span>
+    <span>Bus Stop Id: {{ user.busStopId }}</span>
+  </div>
+</div>
