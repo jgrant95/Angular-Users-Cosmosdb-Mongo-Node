@@ -9,7 +9,7 @@ const app = express()
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
-app.use(express.static(path.join(root, 'dist')))
+app.use(express.static(path.join(root, 'dist/angular-cosmosdb')))
 app.use('/api', routes)
 // routes
 
