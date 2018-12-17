@@ -1,12 +1,15 @@
 const express = require('express')
 const router = express.Router()
 
+const userService = require('./user.service')
+
 router.get('/users', (req, res) => {
-    res.send(200, [
-        { "id": 10, "amazonUserId": "12345", "busStopId": "001" },
-        { "id": 20, "amazonUserId": "22345", "busStopId": "102" },
-        { "id": 30, "amazonUserId": "32345", "busStopId": "203" }
-    ])
+    userService.getUsers(req, res)
+    // res.send(200, [
+    //     { "id": 10, "amazonUserId": "12345", "busStopId": "001" },
+    //     { "id": 20, "amazonUserId": "22345", "busStopId": "102" },
+    //     { "id": 30, "amazonUserId": "32345", "busStopId": "203" }
+    // ])
 })
 
 module.exports = router
