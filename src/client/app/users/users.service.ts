@@ -12,4 +12,8 @@ export class UsersService {
     getUsers() {
         return this.http.get<Array<User>>(`${api}/users`)
     }
+
+    addUser(user: User) {
+        return this.http.post<User>(`${api}/user`, user)
+    }
 }

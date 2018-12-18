@@ -4,8 +4,21 @@
 
 <div class="user-container">
   <div class="user" *ngFor="let user of users">
-    <span>Id: {{ user.id }}</span>
+    <span>Id: {{ user._id }}</span>
     <span>Amazon User Id: {{ user.amazonUserId }}</span>
     <span>Bus Stop Id: {{ user.busStopId }}</span>
   </div>
+</div>
+
+<div class="button" (click)="addUser()">
+  ADD USER
+</div>
+
+<div>
+  <div>
+    Id :<input [(ngModel)]="newUser._id" type="text" name="id"></div>
+  <div>
+    Amazon Id: <input [(ngModel)]="newUser.amazonUserId" type="text" name="amazonUserId"></div>
+  <div>
+    Bus Stop Id: <input [(ngModel)]="newUser.busStopId" type="text" name="busStopId"></div>
 </div>

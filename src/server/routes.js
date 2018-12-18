@@ -12,4 +12,8 @@ router.get('/users', (req, res) => {
     // ])
 })
 
+router.post('/user', (req, res) => {
+    userService.postUser(req, res)
+})
+
 module.exports = router

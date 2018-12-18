@@ -9,8 +9,12 @@ const mongoUri = `mongodb://${env.dbName}:${env.key}@${env.dbName}.documents.azu
 const mongo = {
     uri: mongoUri,
     opt: {
-        // dbName: env.dbName,
-        // useNewUrlParser: true
+        auth: {
+            user: env.dbName,
+            password: env.key
+        },
+        dbName: env.dbName,
+        useNewUrlParser: true
     }
   };
   

@@ -9,6 +9,7 @@ import { User } from './user';
 })
 export class UsersComponent implements OnInit {
 
+  newUser: User = new User
   users: Array<User> = []
 
   constructor(private usersService: UsersService) { }
@@ -24,6 +25,18 @@ export class UsersComponent implements OnInit {
       },
       (err) => {
         console.log("Error occurred: ", err)
+      }
+    )
+  }
+
+  addUser() {
+    this.usersService.addUser(this.newUser).subscribe(
+      (res) => {
+        this.users.push(res)
+        this.newUser = new User
+      },
+      (err) => {
+        console.log("Error occured whilst trying to add user: ", err)
       }
     )
   }
