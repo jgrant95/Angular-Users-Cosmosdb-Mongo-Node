@@ -3,22 +3,35 @@
 </h1>
 
 <div class="user-container">
-  <div class="user" *ngFor="let user of users">
-    <span>Id: {{ user._id }}</span>
-    <span>Amazon User Id: {{ user.amazonUserId }}</span>
-    <span>Bus Stop Id: {{ user.busStopId }}</span>
-  </div>
+  <mat-card class="user mat-elevation-z6" *ngFor="let user of users">
+    <mat-card-header>
+      <mat-card-title>Id : {{ user._id }}</mat-card-title>
+      <mat-card-subtitle>Amazon User Id : {{ user.amazonUserId }}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>Bus Stop Id : {{ user.busStopId }}</mat-card-content>
+    <mat-card-actions>
+      <button mat-icon-button>
+        <mat-icon aria-label="Edit icon">create</mat-icon>
+      </button>
+      <button mat-icon-button>
+        <mat-icon aria-label="Delete icon">clear</mat-icon>
+      </button>
+    </mat-card-actions>
+  </mat-card>
 </div>
 
-<div class="button" (click)="addUser()">
-  ADD USER
-</div>
+<form class="example-form">
+  <mat-form-field class="example-full-width">
+    <input [(ngModel)]="newUser._id" matInput placeholder="Id" name="id">
+  </mat-form-field>
 
-<div>
-  <div>
-    Id :<input [(ngModel)]="newUser._id" type="text" name="id"></div>
-  <div>
-    Amazon Id: <input [(ngModel)]="newUser.amazonUserId" type="text" name="amazonUserId"></div>
-  <div>
-    Bus Stop Id: <input [(ngModel)]="newUser.busStopId" type="text" name="busStopId"></div>
-</div>
+  <mat-form-field class="example-full-width">
+    <input [(ngModel)]="newUser.amazonUserId" matInput placeholder="Amazon User Id" name="amazonUserId">
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <input [(ngModel)]="newUser.busStopId" matInput placeholder="Bus Stop Id" name="busStopId">
+  </mat-form-field>
+
+  <button mat-stroked-button (click)="addUser()">ADD USER</button>
+</form>
