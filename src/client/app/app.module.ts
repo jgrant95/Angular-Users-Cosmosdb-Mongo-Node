@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatCardModule, MatButtonModule, MatInputModule, MatIconModule } from '@angular/material';
+import { MatCardModule, MatButtonModule, MatInputModule, MatIconModule, MatChipsModule } from '@angular/material';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -24,7 +24,8 @@ import { UsersService } from './users/users.service';
     MatCardModule, 
     MatButtonModule, 
     MatInputModule,
-    MatIconModule
+    MatIconModule,
+    MatChipsModule
   ],
   providers: [UsersService],
   bootstrap: [AppComponent]

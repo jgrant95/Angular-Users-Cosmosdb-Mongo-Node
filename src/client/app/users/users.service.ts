@@ -16,4 +16,12 @@ export class UsersService {
     addUser(user: User) {
         return this.http.post<User>(`${api}/user`, user)
     }
+
+    putUser(id: string, user: User) {
+        return this.http.put<User>(`${api}/user/${id}`, user)
+    }
+
+    deleteUser(id: string) {
+        return this.http.delete<User>(`${api}/user/${id}`)
+    }
 }

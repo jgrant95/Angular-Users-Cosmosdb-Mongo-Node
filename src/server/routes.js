@@ -16,4 +16,12 @@ router.post('/user', (req, res) => {
     userService.postUser(req, res)
 })
 
+router.put('/user/:id', (req, res) => {
+    userService.putUser(req, res)
+})
+
+router.delete('/user/:id', (req, res) => {
+    userService.deleteUser(req, res)
+})
+
 module.exports = router

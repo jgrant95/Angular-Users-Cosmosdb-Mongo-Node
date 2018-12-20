@@ -1,16 +1,24 @@
 <h1>
   Registered Alexa Transport Users
+
+  <mat-icon *ngIf="updatingUser" color='primary'>cloud_upload</mat-icon>
 </h1>
 
 <div class="user-container">
   <mat-card class="user mat-elevation-z6" *ngFor="let user of users">
     <mat-card-header>
-      <mat-card-title>Id : {{ user._id }}</mat-card-title>
+      <mat-card-title>
+        Id : {{ user._id }}
+      </mat-card-title>
+      <mat-chip-list>
+        <mat-chip *ngIf="currentUserDirty(user._id)" color="warn">Not Saved</mat-chip>
+      </mat-chip-list>
       <mat-card-subtitle>Amazon User Id : {{ user.amazonUserId }}</mat-card-subtitle>
     </mat-card-header>
+
     <mat-card-content>Bus Stop Id : {{ user.busStopId }}</mat-card-content>
     <mat-card-actions>
-      <button mat-icon-button>
+      <button mat-icon-button (click)="selectUser(user)">
         <mat-icon aria-label="Edit icon">create</mat-icon>
       </button>
       <button mat-icon-button>
@@ -22,16 +30,22 @@
 
 <form class="example-form">
   <mat-form-field class="example-full-width">
-    <input [(ngModel)]="newUser._id" matInput placeholder="Id" name="id">
+    <input [(ngModel)]="user._id" matInput placeholder="Id" name="id">
   </mat-form-field>
 
   <mat-form-field class="example-full-width">
-    <input [(ngModel)]="newUser.amazonUserId" matInput placeholder="Amazon User Id" name="amazonUserId">
+    <input [(ngModel)]="user.amazonUserId" matInput placeholder="Amazon User Id" name="amazonUserId">
   </mat-form-field>
 
   <mat-form-field class="example-full-width">
-    <input [(ngModel)]="newUser.busStopId" matInput placeholder="Bus Stop Id" name="busStopId">
+    <input [(ngModel)]="user.busStopId" matInput placeholder="Bus Stop Id" name="busStopId">
   </mat-form-field>
 
-  <button mat-stroked-button (click)="addUser()">ADD USER</button>
+  <div *ngIf="currentUserExists else createUser">
+    <button mat-stroked-button (click)="updateUser()">UPDATE USER</button>
+    <button mat-stroked-button (click)="clearUser()" color="warn">CANCEL</button>
+  </div>
+  <ng-template #createUser>
+    <button mat-stroked-button (click)="addUser()">ADD USER</button>
+  </ng-template>
 </form>
