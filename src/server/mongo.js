@@ -17,8 +17,6 @@ const mongo = {
         useNewUrlParser: true
     }
   };
-  
-
 
 function connect() {
     return mongoose.connect(mongo.uri, mongo.opt).then(

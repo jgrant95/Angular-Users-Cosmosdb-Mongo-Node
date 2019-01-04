@@ -50,13 +50,16 @@ export class UsersComponent implements OnInit {
   }
 
   addUser() {
+    this.updatingUser = true
     this.usersService.addUser(this.user).subscribe(
       (res) => {
         this.users.push(res)
         this.user = new User
+        this.updatingUser = false
       },
       (err) => {
         console.log("Error occured whilst trying to add user: ", err)
+        this.updatingUser = false
       }
     )
   }
@@ -85,6 +88,22 @@ export class UsersComponent implements OnInit {
       },
       (err) => {
         console.log("Error occured whilst trying to update user: ", err)
+        this.updatingUser = false
+      }
+    )
+  }
+
+  deleteUser(user) {
+    this.updatingUser = true
+    this.usersService.deleteUser(user._id).subscribe(
+      (res) => {
+        let i = this.users.indexOf(user)
+        this.users.splice(i, 1)
+        this.updatingUser = false
+      },
+      (err) => {
+        console.log("Error occured whilst trying to update user: ", err)
+        this.updatingUser = false
       }
     )
   }

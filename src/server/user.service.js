@@ -58,7 +58,7 @@ function putUser(req, res) {
 function deleteUser(req, res) {
     const id = parseInt(req.params.id, 10)
 
-    User.findOneAndRemove({id: id})
+    User.findOneAndRemove({_id: id})
         .then(user => {
             if (!checkFound(res, user)) return
             res.status(200).json(user)
